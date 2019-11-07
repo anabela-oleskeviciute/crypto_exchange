@@ -17,26 +17,22 @@ public class Transaction {
     }
 
     private boolean isValid() {
-        return to != null && from != null && from.getBalance()/*+from.getCredit()*/ >= amount;
+        return to !=null && from!= null && from.getBalance() >= amount;
     }
 
     public List<User> execute() {
         List<User> transactedUsers = new ArrayList<>();
         if (isValid()) {
-            if (from.getBalance() >= amount) {
-                from.setBalance(from.getBalance() - amount);
-                to.setBalance(to.getBalance() + amount);
-            }
-            /*if(from.getBalance()!=0) {
-                int
-            }
+
+            from.setBalance(from.getBalance() - amount);
+            to.setBalance(to.getBalance() + amount);
         } else {
             System.out.println("Transakcija nevalidi");
-        }*/
-            transactedUsers.add(from);
-            transactedUsers.add(to);
-            return transactedUsers;
         }
-
-
+        transactedUsers.add(from);
+        transactedUsers.add(to);
+        return transactedUsers;
     }
+
+
+}
